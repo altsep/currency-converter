@@ -1,2 +1,3 @@
 export { default as useFetch } from './useFetch';
-export { default as useSymbols } from './useSymbols';
+export { default as useInput } from './useInput';
+export { default as useShouldUpdate } from './useShouldUpdate';
