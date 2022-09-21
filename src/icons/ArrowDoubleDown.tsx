@@ -6,7 +6,7 @@ export default function ArrowDoubleDown() {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6 md:-rotate-90 self-center my-6'
+      className='w-6 h-6 md:-rotate-90 self-center my-6 md:mt-3'
     >
       <path
         strokeLinecap='round'
