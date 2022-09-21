@@ -10,10 +10,12 @@ interface P {
 }
 
 function Select({ label, name, symbols, base }: P) {
-  const [value, setValue] = useState<string | undefined>();
-  const optionList = Object.keys(symbols);
   const country = navigator.language.split('-')[1];
   const localCurrency = countryToCurrency[country];
+  const [value, setValue] = useState<string | undefined>(() => {
+    if (base) return localCurrency;
+  });
+  const optionList = Object.keys(symbols);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setValue(e.target.value);
@@ -21,14 +23,20 @@ function Select({ label, name, symbols, base }: P) {
   return (
     <div className=''>
       <label htmlFor={label}></label>
-      <select name={name} id={label} onChange={handleChange}>
+      <select
+        className='p-2'
+        name={name}
+        id={label}
+        onChange={handleChange}
+        defaultValue={base ? localCurrency : undefined}
+      >
         {optionList.map((o) => (
-          <option key={o} value={o} selected={base && localCurrency === o}>
+          <option key={o} value={o}>
             {o}
           </option>
         ))}
       </select>
-      <p>{symbols[value || optionList[0]].description}</p>
+      <p className='my-2 font-serif'>{symbols[value || optionList[0]].description}</p>
     </div>
   );
 }
