@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "root/index.tsx"]
+  "include": ["src", "root/index.tsx", "root/store.ts"]
 }
