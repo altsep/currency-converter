@@ -19,6 +19,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.1.0
   autoprefixer: ^10.4.11
   babel-jest: ^29.0.3
+  country-to-currency: ^1.0.5
   eslint: ^8.23.1
   eslint-plugin-jest-dom: ^4.0.2
   eslint-plugin-json: ^3.1.0
@@ -41,6 +42,7 @@ specifiers:
   web-vitals: ^3.0.2
 
 dependencies:
+  country-to-currency: 1.0.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.4.0_biqbaboplfbrettd7655fr4n2y
@@ -2606,6 +2608,10 @@ packages:
     dependencies:
       browserslist: 4.21.4
     dev: true
+
+  /country-to-currency/1.0.5:
+    resolution: {integrity: sha512-TrYOcrjBJZ5rNaj+kdm50PgDYOioh38XFrQfHBoEzvDGAHqXNjOtscc/fObdaD/8PNtm73oIsgiUpvbbY5einQ==}
+    dev: false
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}

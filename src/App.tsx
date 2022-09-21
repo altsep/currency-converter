@@ -1,9 +1,11 @@
-import { useSymbols } from './hooks';
+import { Main } from './components';
 
 function App() {
-  const { symbols, isLoading, error } = useSymbols();
-
-  return <div></div>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
 
 export default App;
