@@ -1,10 +1,23 @@
-import { Main } from './components';
+import { Converter } from './components';
 
 function App() {
   return (
-    <>
-      <Main />
-    </>
+    <div className='flex flex-col items-center font-mono'>
+      <header className='h-24 mb-12 fixed'></header>
+      <main className='absolute top-1/2 -translate-y-full flex flex-col justify-center md:flex-row md:justify-around max-w-xs md:max-w-2xl w-full'>
+        <Converter />
+      </main>
+      <footer className='fixed flex items-center bottom-0 h-24 text-sm'>
+        Made with 💜 by&nbsp;
+        <a
+          href='https://altsep.vercel.app/'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          us
+        </a>
+      </footer>
+    </div>
   );
 }
 
