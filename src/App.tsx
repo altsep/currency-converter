@@ -1,9 +1,9 @@
-import React from 'react'
+import { useSymbols } from './hooks';
 
 function App() {
-  return (
-    <div>App</div>
-  )
+  const { symbols, isLoading, error } = useSymbols();
+
+  return <div></div>;
 }
 
-export default App
+export default App;
