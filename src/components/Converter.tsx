@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSymbols } from '../hooks';
 import { Select } from '.';
-import { UpArrow } from '../icons';
+import { ArrowDoubleDown } from '../icons';
 
 function Converter() {
-  const { symbols, isLoading, error } = useSymbols();
+  const { symbols, error } = useSymbols();
 
   if (symbols) {
     const targetSelectProps = {
@@ -21,7 +21,7 @@ function Converter() {
     return (
       <>
         <Select {...baseSelectProps} />
-        <UpArrow />
+        <ArrowDoubleDown />
         <Select {...targetSelectProps} />
       </>
     );

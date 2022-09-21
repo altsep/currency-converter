@@ -1,1 +1,1 @@
-export { default as UpArrow } from './ChevronDoubleDown';
+export { default as ArrowDoubleDown } from './ArrowDoubleDown';

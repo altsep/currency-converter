@@ -1,4 +1,4 @@
-export default function ChevronDoubleDown() {
+export default function ArrowDoubleDown() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -6,7 +6,7 @@ export default function ChevronDoubleDown() {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6 md:-rotate-90 self-center m-4'
+      className='w-6 h-6 md:-rotate-90 self-center my-6'
     >
       <path
         strokeLinecap='round'
