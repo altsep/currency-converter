@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Symbols } from '../interfaces';
 import countryToCurrency from 'country-to-currency';
-import Input from './Input';
+import { useInput } from '../hooks';
 
 interface P {
   label: string;
@@ -31,7 +31,7 @@ function Select({ label, name, symbols, base }: P) {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setValue(e.target.value);
 
-  const inputProps = { name: name.split('-')[0] + '-currency' };
+  const inputProps = useInput(name.split('-')[0] + '-currency');
 
   return (
     <div className='font-mono'>
@@ -45,7 +45,11 @@ function Select({ label, name, symbols, base }: P) {
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
           <span className='text-gray-500 sm:text-sm'>{currencySymbol}</span>
         </div>
-        <Input {...inputProps} />
+        <input
+          {...inputProps}
+          className='block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+          placeholder='0.00'
+        />
         <div className='absolute inset-y-0 right-0 flex items-center'>
           <label htmlFor={label} className='sr-only'></label>
           <select
