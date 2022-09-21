@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSymbols } from '../hooks';
-import { Select } from '../components';
+import { Select } from '.';
+import { UpArrow } from '../icons';
 
-function Main() {
+function Converter() {
   const { symbols, isLoading, error } = useSymbols();
 
   if (symbols) {
@@ -18,13 +19,14 @@ function Main() {
       base: true,
     };
     return (
-      <main className='mx-auto w-max'>
+      <>
         <Select {...baseSelectProps} />
+        <UpArrow />
         <Select {...targetSelectProps} />
-      </main>
+      </>
     );
   } else if (error) return <p>An error has occured</p>;
   else return <p>Loading</p>;
 }
 
-export default Main;
+export default Converter;

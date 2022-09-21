@@ -1,2 +1,2 @@
-export { default as Main } from './Main';
+export { default as Converter } from './Converter';
 export { default as Select } from './Select';
