@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useSymbols } from '../hooks';
 import { Select } from '.';
 import { ArrowDoubleDown } from '../icons';

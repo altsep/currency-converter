@@ -26,12 +26,12 @@ function Select({ label, name, symbols, base }: P) {
     notation: 'compact',
   })
     .format(0)
-    .replace(/[\d.a-z]+/ig, '');
+    .replace(/[\d.a-z]+/gi, '');
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setValue(e.target.value);
 
-  const inputProps = { name, label };
+  const inputProps = { name: name.split('-')[0] + '-currency' };
 
   return (
     <div className='font-mono'>
