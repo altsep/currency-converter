@@ -5,7 +5,7 @@ export interface CurrenciesStore {
   'target-currency-code': string;
   'base-currency-value': string;
   'target-currency-value': string;
-  ratio: number | undefined;
+  rates: number | undefined;
 }
 
 const initialState: CurrenciesStore = {
@@ -13,7 +13,7 @@ const initialState: CurrenciesStore = {
   'target-currency-code': '',
   'base-currency-value': '',
   'target-currency-value': '',
-  ratio: undefined,
+  rates: undefined,
 };
 
 export const counterSlice = createSlice({
