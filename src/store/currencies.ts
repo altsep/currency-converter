@@ -26,10 +26,10 @@ export const counterSlice = createSlice({
       } = action;
       return { ...state, [name]: value };
     },
-    setRatio: (state, action) => ({ ...state, ratio: action.payload }),
+    setRates: (state, action) => ({ ...state, rates: action.payload }),
   },
 });
 
-export const { setCurrency, setRatio } = counterSlice.actions;
+export const { setCurrency, setRates } = counterSlice.actions;
 
 export default counterSlice.reducer;

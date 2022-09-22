@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
-import { setCurrency } from '../store/currencies';
+import { setCurrency, setRates } from '../store/currencies';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { RootState } from '../store';
 import { Currencies } from '../currencies';
+import { useFetch } from './';
 import countryToCurrency from 'country-to-currency';
+import { endpoints } from '../constants';
 
 function useSelect(name: string, symbols: Currencies.List) {
   const optionList = Object.keys(symbols);
