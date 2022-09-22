@@ -17,7 +17,7 @@ function useSelect(name: string, symbols: Currencies.List) {
 
   const value = useAppSelector(
     (state: RootState) => state.currencies[name] || defaultValue
-  );  
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -28,6 +28,18 @@ function useSelect(name: string, symbols: Currencies.List) {
     const { name, value } = e.target;
     dispatch(setCurrency({ name, value }));
   };
+
+  const { latestURL } = endpoints;
+
+  const { data: ratesData } = useFetch(() =>
+    isBaseInstance ? latestURL(value) : null
+  );
+
+  useEffect(() => {
+    if (ratesData) {
+      dispatch(setRates(ratesData.rates));
+    }
+  }, [dispatch, ratesData, value]);
 
   const currencySymbol = new Intl.NumberFormat([navigator.language], {
     style: 'currency',
