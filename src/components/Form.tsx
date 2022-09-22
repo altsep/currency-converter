@@ -10,7 +10,7 @@ interface P {
 
 const getName = (name: string, modifier: string) => `${name}-${modifier}`;
 
-function Select({ label, name, symbols }: P) {
+function Form({ label, name, symbols }: P) {
   const inputProps = useInput(getName(name, 'value'));
   const { selectProps, currencySymbol, optionList, description } = useSelect(
     getName(name, 'code'),
@@ -53,4 +53,4 @@ function Select({ label, name, symbols }: P) {
   );
 }
 
-export default Select;
+export default Form;
