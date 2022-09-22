@@ -1,4 +1,4 @@
-import { changeCurrencyValue } from '../store/currencyValues';
+import { setCurrency } from '../store/currencies';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { RootState } from '../store';
 
@@ -8,7 +8,7 @@ function useInput(name: string) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(changeCurrencyValue({ name, value }));
+    dispatch(setCurrency({ name, value }));
   };
 
   return {

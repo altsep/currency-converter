@@ -1,7 +1,7 @@
 import { Select } from '.';
 import { ArrowDoubleDown } from '../icons';
 import { endpoints, symbolsTemp } from '../constants';
-import { useFetch } from '../hooks';
+// import { useFetch } from '../hooks';
 
 function Converter() {
   const { availableURL } = endpoints;
@@ -11,14 +11,13 @@ function Converter() {
   // if (data.symbols) {
     const targetSelectProps = {
       label: 'select-target-currency',
-      name: 'target-currencies',
+      name: 'target-currency',
       symbols: symbolsTemp,
     };
     const baseSelectProps = {
       label: 'select-base-currency',
-      name: 'base-currencies',
+      name: 'base-currency',
       symbols: symbolsTemp,
-      base: true,
     };
     return (
       <>

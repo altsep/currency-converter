@@ -1,38 +1,21 @@
-import { useState } from 'react';
-import type { Symbols } from '../interfaces';
-import countryToCurrency from 'country-to-currency';
-import { useInput } from '../hooks';
+import type { Currencies } from '../currencies';
+import { useInput, useSelect } from '../hooks';
 
 interface P {
   label: string;
   name: string;
-  symbols: Symbols;
+  symbols: Currencies.List;
   base?: boolean;
 }
 
-function Select({ label, name, symbols, base }: P) {
-  const country = navigator.language.split('-')[1];
-  const localCurrency = countryToCurrency[country];
-  const optionList = Object.keys(symbols);
+const getName = (name: string, modifier: string) => `${name}-${modifier}`;
 
-  const [value, setValue] = useState<string>(() => {
-    if (base) return localCurrency;
-    else return optionList[0];
-  });
-  const currencySymbol = new Intl.NumberFormat([navigator.language], {
-    style: 'currency',
-    currency: value,
-    currencyDisplay: 'narrowSymbol',
-    notation: 'compact',
-  })
-    .format(0)
-    .replace(/[\d.a-z]+/gi, '');
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setValue(e.target.value);
-
-  const inputProps = useInput(name.split('-')[0] + '-currency');
-
+function Select({ label, name, symbols }: P) {
+  const inputProps = useInput(getName(name, 'value'));
+  const { selectProps, currencySymbol, optionList, description } = useSelect(
+    getName(name, 'code'),
+    symbols
+  );
   return (
     <div className='font-mono'>
       <label
@@ -47,16 +30,14 @@ function Select({ label, name, symbols, base }: P) {
         </div>
         <input
           {...inputProps}
-          className='block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+          className='block w-full rounded-md border-gray-300 border py-2 pl-7 pr-12 focus:ring-2 focus:border-indigo-500 focus:outline-indigo-500 focus:ring-indigo-500 sm:text-sm'
           placeholder='0.00'
         />
         <div className='absolute inset-y-0 right-0 flex items-center'>
           <label htmlFor={label} className='sr-only'></label>
           <select
-            name={name}
+            {...selectProps}
             id={label}
-            onChange={handleChange}
-            defaultValue={base ? localCurrency : undefined}
             className='h-full rounded-md border-transparent bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
           >
             {optionList.map((o) => (
@@ -67,7 +48,7 @@ function Select({ label, name, symbols, base }: P) {
           </select>
         </div>
       </div>
-      <p className='my-2 font-serif'>{symbols[value].description}</p>
+      <p className='my-2 font-serif'>{description}</p>
     </div>
   );
 }

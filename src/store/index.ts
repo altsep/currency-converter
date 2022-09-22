@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import currencyValues from './currencyValues';
+import currencies from './currencies';
 
 const combinedReducers = combineReducers({
-  currencies: currencyValues,
+  currencies,
 });
 
 const store = configureStore({
