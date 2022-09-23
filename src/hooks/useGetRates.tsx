@@ -20,9 +20,10 @@ function useGetRates() {
   useEffect(() => {
     if (data) {
       dispatch(setRates(data.rates));
-      dispatch(setRatio(targetCode));
+      const ratio = data.rates[targetCode];
+      dispatch(setRatio(ratio));
     }
-  }, [data, dispatch, targetCode]);
+  }, [data, dispatch, baseCode, targetCode]);
 }
 
 export default useGetRates;

@@ -1,34 +1,46 @@
 import { Form } from '.';
-import { ArrowDoubleDown } from '../icons';
-import { endpoints, symbolsTemp } from '../constants';
-// import { useFetch } from '../hooks';
+import { ArrowDoubleDown, ArrowDoubleUp } from '../icons';
+import { endpoints, symbolsTemp, prod } from '../constants';
+import { useFetch, useGetRates } from '../hooks';
+import Loader from './Loader';
 
 function Converter() {
   const { availableURL } = endpoints;
 
-  // const { data, error } = useFetch(availableURL);
+  const { data, isLoading, error } = useFetch(() =>
+    prod ? availableURL : null
+  );
 
-  // if (data.symbols) {
+  // Get rates for base code and update ratio on selection
+  useGetRates();
+
+  const symbols = prod ? data && data.symbols : symbolsTemp;
+
+  console.log(error);
+
+  if (error) return <p className='text-red-500'>Could not fetch data</p>;
+  if (prod && isLoading) return <Loader />;
+  
   const targetSelectProps = {
     label: 'select-target-currency',
     name: 'target-currency',
-    symbols: symbolsTemp,
+    symbols,
   };
   const baseSelectProps = {
     label: 'select-base-currency',
     name: 'base-currency',
-    symbols: symbolsTemp,
+    symbols,
   };
   return (
     <>
       <Form {...baseSelectProps} />
-      <ArrowDoubleDown />
+      <div className='flex flex-col md:flex-row'>
+        <ArrowDoubleUp />
+        <ArrowDoubleDown />
+      </div>
       <Form {...targetSelectProps} />
     </>
   );
-  // }
-  // else if (error) return <p>An error has occured</p>;
-  // else return <p>Loading</p>;
 }
 
 export default Converter;

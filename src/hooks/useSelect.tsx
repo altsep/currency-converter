@@ -29,18 +29,6 @@ function useSelect(name: string, symbols: Currencies.List) {
     dispatch(setCurrency({ name, value }));
   };
 
-  const { latestURL } = endpoints;
-
-  const { data: ratesData } = useFetch(() =>
-    isBaseInstance ? latestURL(value) : null
-  );
-
-  useEffect(() => {
-    if (ratesData) {
-      dispatch(setRates(ratesData.rates));
-    }
-  }, [dispatch, ratesData, value]);
-
   const currencySymbol = new Intl.NumberFormat([navigator.language], {
     style: 'currency',
     currency: value,
