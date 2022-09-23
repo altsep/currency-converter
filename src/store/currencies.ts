@@ -7,6 +7,7 @@ export interface CurrenciesStore {
   'target-currency-value': string;
   baseRates: { [key: string]: number } | null;
   baseRatio: number | null;
+  isLoading: false;
 }
 
 const initialState: CurrenciesStore = {
@@ -16,13 +17,14 @@ const initialState: CurrenciesStore = {
   'target-currency-value': '',
   baseRates: null,
   baseRatio: null,
+  isLoading: false,
 };
 
 export const counterSlice = createSlice({
   name: 'currencies',
   initialState,
   reducers: {
-    setCurrency: (state, action) => {
+    setProperty: (state, action) => {
       const { name, value } = action.payload;
       return { ...state, [name]: value };
     },
@@ -34,6 +36,6 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { setCurrency, setRates, setRatio } = counterSlice.actions;
+export const { setProperty, setRates, setRatio } = counterSlice.actions;
 
 export default counterSlice.reducer;

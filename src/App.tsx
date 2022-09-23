@@ -1,4 +1,5 @@
 import { Converter } from './components';
+import Loader from './components/Loader';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <main className='absolute top-1/2 -translate-y-full flex flex-col justify-center md:flex-row md:justify-around max-w-xs md:max-w-2xl w-full'>
         <Converter />
       </main>
+      <Loader />
       <footer className='fixed flex items-center bottom-0 h-24 text-sm md:text-xs font-mono'>
         Made with 💜 by&nbsp;
         <a

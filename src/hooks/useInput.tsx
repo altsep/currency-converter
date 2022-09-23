@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setCurrency } from '../store/currencies';
+import { setProperty } from '../store/currencies';
 import type { RootState } from '../store';
 import { getOtherName, getOtherValue } from '../functions';
 
@@ -13,11 +13,11 @@ function useInput(isBaseInstance: boolean, name: string) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (/^\d+\.?\d*$|^$/.test(value)) {
-      dispatch(setCurrency({ name, value }));
+      dispatch(setProperty({ name, value }));
 
       const otherInputName = getOtherName(isBaseInstance, name);
       const otherInputValue = getOtherValue(isBaseInstance, value, baseRatio);
-      dispatch(setCurrency({ name: otherInputName, value: otherInputValue }));
+      dispatch(setProperty({ name: otherInputName, value: otherInputValue }));
     }
   };
 

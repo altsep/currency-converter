@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setCurrency } from '../store/currencies';
+import { setProperty } from '../store/currencies';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { RootState } from '../store';
 import { Currencies } from '../currencies';
@@ -23,12 +23,12 @@ function useSelect(
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setCurrency({ name, value }));
+    dispatch(setProperty({ name, value }));
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    dispatch(setCurrency({ name, value }));
+    dispatch(setProperty({ name, value }));
   };
 
   const currencySymbol = new Intl.NumberFormat('en-US', {

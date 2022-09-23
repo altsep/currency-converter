@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { setCurrency } from '../store/currencies';
+import { setProperty } from '../store/currencies';
 import { getCurrentValue } from '../functions';
 import { RootState } from '../store';
 
@@ -22,7 +22,7 @@ function useOnSelect() {
         baseRates[targetCode]
       );
       dispatch(
-        setCurrency({ name: 'base-currency-value', value: newCurrentValue })
+        setProperty({ name: 'base-currency-value', value: newCurrentValue })
       );
     }
   }, [baseCode, baseRates]);
@@ -35,7 +35,7 @@ function useOnSelect() {
         baseRates[targetCode]
       );
       dispatch(
-        setCurrency({ name: 'target-currency-value', value: newInputValue })
+        setProperty({ name: 'target-currency-value', value: newInputValue })
       );
     }
   }, [targetCode]);
