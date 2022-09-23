@@ -11,7 +11,6 @@ function useOnSelect() {
     ['base-currency-code']: baseCode,
     ['target-currency-code']: targetCode,
     baseRates,
-    baseRatio,
   } = useAppSelector((state: RootState) => state.currencies);
 
   const dispatch = useAppDispatch();
@@ -29,7 +28,6 @@ function useOnSelect() {
   }, [baseCode, baseRates]);
 
   useEffect(() => {
-    console.log(targetCode, baseRatio);
     if (baseRates) {
       const newInputValue = getCurrentValue(
         false,
