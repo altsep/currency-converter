@@ -5,6 +5,8 @@ import type { RootState } from '../store';
 import { Currencies } from '../currencies';
 import countryToCurrency from 'country-to-currency';
 
+/// <reference path="../countryToCurrency.d.ts" />
+
 function useSelect(
   isBaseInstance: boolean,
   name: string,
@@ -12,8 +14,9 @@ function useSelect(
 ) {
   const optionList = Object.keys(symbols);
 
-  const country = navigator.language.split('-')[1] || 'US';
-  const localCurrency = countryToCurrency[country]
+  const locale = navigator.language;
+  const country = locale.split('-')[1] || 'US';
+  const localCurrency = countryToCurrency[country];
   const defaultValue = isBaseInstance ? localCurrency : optionList[0];
 
   const value = useAppSelector(
@@ -31,7 +34,7 @@ function useSelect(
     dispatch(setCurrency({ name, value }));
   };
 
-  const currencySymbol = new Intl.NumberFormat([navigator.language], {
+  const currencySymbol = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: value,
     currencyDisplay: 'narrowSymbol',
