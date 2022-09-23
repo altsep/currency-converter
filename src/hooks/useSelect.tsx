@@ -12,8 +12,8 @@ function useSelect(
 ) {
   const optionList = Object.keys(symbols);
 
-  const country = navigator.language.split('-')[1];
-  const localCurrency = countryToCurrency[country];
+  const country = navigator.language.split('-')[1] || 'US';
+  const localCurrency = countryToCurrency[country]
   const defaultValue = isBaseInstance ? localCurrency : optionList[0];
 
   const value = useAppSelector(
