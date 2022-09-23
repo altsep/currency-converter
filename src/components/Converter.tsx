@@ -14,16 +14,17 @@ function Converter() {
   // Convert other input value to current on selection
   useOnSelect();
 
+  // Use an offline list of symbols in development
   const symbols = prod ? data && data.symbols : symbolsTemp;
 
   const targetSelectProps = {
-    label: 'select-target-currency',
-    name: 'target-currency',
+    label: 'select-target',
+    name: 'target',
     symbols,
   };
   const baseSelectProps = {
-    label: 'select-base-currency',
-    name: 'base-currency',
+    label: 'select-base',
+    name: 'base',
     symbols,
   };
 
@@ -32,7 +33,6 @@ function Converter() {
   else if (symbols)
     return (
       <>
-        {' '}
         <Form {...baseSelectProps} />
         <div className='flex flex-col md:flex-row'>
           <ArrowDoubleUp />

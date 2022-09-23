@@ -31,7 +31,7 @@ function useSelect(
     dispatch(setProperty({ name, value }));
   };
 
-  const currencySymbol = new Intl.NumberFormat('en-US', {
+  const symbol = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: value,
     currencyDisplay: 'narrowSymbol',
@@ -45,7 +45,7 @@ function useSelect(
   const { description } = selectedSymbolData;
 
   return {
-    currencySymbol,
+    symbol,
     optionList,
     description,
     selectProps: {

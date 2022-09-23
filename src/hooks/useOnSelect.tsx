@@ -6,10 +6,10 @@ import { RootState } from '../store';
 
 function useOnSelect() {
   const {
-    ['base-currency-value']: baseInputValue,
-    ['target-currency-value']: targetInputValue,
-    ['base-currency-code']: baseCode,
-    ['target-currency-code']: targetCode,
+    ['base-value']: baseInputValue,
+    ['target-value']: targetInputValue,
+    ['base-code']: baseCode,
+    ['target-code']: targetCode,
     baseRates,
   } = useAppSelector((state: RootState) => state.currencies);
 
@@ -21,9 +21,7 @@ function useOnSelect() {
         targetInputValue,
         baseRates[targetCode]
       );
-      dispatch(
-        setProperty({ name: 'base-currency-value', value: newCurrentValue })
-      );
+      dispatch(setProperty({ name: 'base-value', value: newCurrentValue }));
     }
   }, [baseCode, baseRates]);
 
@@ -34,9 +32,7 @@ function useOnSelect() {
         baseInputValue,
         baseRates[targetCode]
       );
-      dispatch(
-        setProperty({ name: 'target-currency-value', value: newInputValue })
-      );
+      dispatch(setProperty({ name: 'target-value', value: newInputValue }));
     }
   }, [targetCode]);
 }

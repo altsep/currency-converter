@@ -8,10 +8,8 @@ import { setRates, setRatio } from '../store/currencies';
 function useGetRates() {
   const { latestURL } = endpoints;
 
-  const {
-    ['base-currency-code']: baseCode,
-    ['target-currency-code']: targetCode,
-  } = useAppSelector((state: RootState) => state.currencies);
+  const { ['base-code']: baseCode, ['target-code']: targetCode } =
+    useAppSelector((state: RootState) => state.currencies);
 
   const { data } = useFetch(() => (baseCode ? latestURL(baseCode) : null));
 

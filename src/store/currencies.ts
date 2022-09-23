@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface CurrenciesStore {
-  'base-currency-code': string;
-  'target-currency-code': string;
-  'base-currency-value': string;
-  'target-currency-value': string;
+  'base-code': string;
+  'target-code': string;
+  'base-value': string;
+  'target-value': string;
   baseRates: { [key: string]: number } | null;
   baseRatio: number | null;
   isLoading: false;
 }
 
 const initialState: CurrenciesStore = {
-  'base-currency-code': '',
-  'target-currency-code': '',
-  'base-currency-value': '',
-  'target-currency-value': '',
+  'base-code': '',
+  'target-code': '',
+  'base-value': '',
+  'target-value': '',
   baseRates: null,
   baseRatio: null,
   isLoading: false,

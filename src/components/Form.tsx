@@ -10,7 +10,7 @@ interface P {
 function Form({ label, name, symbols }: P) {
   const isBaseInstance = name.includes('base');
   const inputProps = useInput(isBaseInstance, `${name}-value`);
-  const { selectProps, currencySymbol, optionList, description } = useSelect(
+  const { selectProps, symbol, optionList, description } = useSelect(
     isBaseInstance,
     `${name}-code`,
     symbols
@@ -25,7 +25,7 @@ function Form({ label, name, symbols }: P) {
       </label>
       <div className='relative mt-1 rounded-md shadow-sm'>
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-          <span className='text-gray-500 md:text-sm'>{currencySymbol}</span>
+          <span className='text-gray-500 md:text-sm'>{symbol}</span>
         </div>
         <input
           {...inputProps}
