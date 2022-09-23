@@ -7,6 +7,10 @@
 /**/coverage
 /**/debug
 
+# distributive
+/**/dist
+/**/build
+
 # misc
 .DS_Store
 .env
