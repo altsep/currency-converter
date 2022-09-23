@@ -9,6 +9,7 @@ export default defineConfig({
   server: {
     port: undefined,
     proxy: {},
+    open: true,
   },
   plugins: [react(), tsconfigPaths()],
 });
