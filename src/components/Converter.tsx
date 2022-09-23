@@ -35,8 +35,8 @@ function Converter() {
       <>
         <Form {...baseSelectProps} />
         <div className='flex flex-col md:flex-row'>
-          <ArrowDoubleUp />
           <ArrowDoubleDown />
+          <ArrowDoubleUp />
         </div>
         <Form {...targetSelectProps} />
       </>

@@ -6,7 +6,7 @@ export default function ArrowDoubleUp() {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6 md:-rotate-90 self-center md:mr-1 mt-6 md:mt-3 mb-1 md:mb-6'
+      className='w-6 h-6 md:-rotate-90 self-center mt-1 md:mt-3 md:ml-1 mb-6'
     >
       <path
         strokeLinecap='round'
