@@ -1,7 +1,7 @@
 import { Form } from '.';
 import { ArrowDoubleDown, ArrowDoubleUp } from '../icons';
 import { endpoints, symbolsTemp, prod } from '../constants';
-import { useFetch, useGetRates } from '../hooks';
+import { useFetch, useGetRates, useOnSelect } from '../hooks';
 import Loader from './Loader';
 
 function Converter() {
@@ -14,13 +14,14 @@ function Converter() {
   // Get rates for base code and update ratio on selection
   useGetRates();
 
-  const symbols = prod ? data && data.symbols : symbolsTemp;
+  // Convert other input value to current on selection
+  useOnSelect();
 
-  console.log(error);
+  const symbols = prod ? data && data.symbols : symbolsTemp;
 
   if (error) return <p className='text-red-500'>Could not fetch data</p>;
   if (prod && isLoading) return <Loader />;
-  
+
   const targetSelectProps = {
     label: 'select-target-currency',
     name: 'target-currency',
