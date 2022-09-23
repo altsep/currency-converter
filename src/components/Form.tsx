@@ -5,15 +5,14 @@ interface P {
   label: string;
   name: string;
   symbols: Currencies.List;
-  base?: boolean;
 }
 
-const getName = (name: string, modifier: string) => `${name}-${modifier}`;
-
 function Form({ label, name, symbols }: P) {
-  const inputProps = useInput(getName(name, 'value'));
+  const isBaseInstance = name.includes('base');
+  const inputProps = useInput(isBaseInstance, `${name}-value`);
   const { selectProps, currencySymbol, optionList, description } = useSelect(
-    getName(name, 'code'),
+    isBaseInstance,
+    `${name}-code`,
     symbols
   );
   return (

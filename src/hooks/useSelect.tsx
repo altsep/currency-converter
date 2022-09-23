@@ -1,23 +1,25 @@
 import { useEffect } from 'react';
-import { setCurrency, setRates } from '../store/currencies';
+import { setCurrency } from '../store/currencies';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { RootState } from '../store';
 import { Currencies } from '../currencies';
-import { useFetch } from './';
 import countryToCurrency from 'country-to-currency';
-import { endpoints } from '../constants';
 
-function useSelect(name: string, symbols: Currencies.List) {
+function useSelect(
+  isBaseInstance: boolean,
+  name: string,
+  symbols: Currencies.List
+) {
   const optionList = Object.keys(symbols);
 
   const country = navigator.language.split('-')[1];
   const localCurrency = countryToCurrency[country];
-  const isBaseInstance = name.includes('base');
   const defaultValue = isBaseInstance ? localCurrency : optionList[0];
 
   const value = useAppSelector(
     (state: RootState) => state.currencies[name] || defaultValue
   );
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {

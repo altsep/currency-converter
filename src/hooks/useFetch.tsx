@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher from '../functions/fetcher';
+import { fetcher } from '../functions';
 
 function useFetch(key: string | (() => string | null)) {
   const { data, error } = useSWR(key, fetcher);
