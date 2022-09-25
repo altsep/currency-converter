@@ -1,5 +1,5 @@
 import { Form } from '.';
-import { ArrowDoubleDown, ArrowDoubleUp } from '../icons';
+import { ArrowPath } from '../icons';
 import { endpoints, symbolsTemp, prod } from '../constants';
 import { useFetch, useGetRates, useOnSelect } from '../hooks';
 
@@ -34,10 +34,9 @@ function Converter() {
     return (
       <>
         <Form {...baseSelectProps} />
-        <div className='flex flex-col md:flex-row'>
-          <ArrowDoubleDown />
-          <ArrowDoubleUp />
-        </div>
+        <ArrowPath
+          className={'self-center my-4 md:mt-0 md:rotate-90 text-neutral-600'}
+        />
         <Form {...targetSelectProps} />
       </>
     );

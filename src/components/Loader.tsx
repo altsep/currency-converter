@@ -6,7 +6,7 @@ function Loader() {
   );
   return (
     <div
-      className='absolute border-r-transparent animate-spin  w-8 h-8 border-4 rounded-full text-gray-300 border-indigo-300 self-center bottom-1/3'
+      className='absolute border-r-transparent animate-spin w-8 h-8 border-4 rounded-full text-gray-300 border-indigo-300 self-center bottom-1/3'
       role='status'
       style={{ display: isLoading ? 'inline-block' : 'none' }}
     >
